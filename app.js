@@ -4,8 +4,9 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
-
-var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
+let indexRouter = require('./routes/index');
+let usersRouter = require('./routes/users');
+let catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
 
 let app = express();
 
@@ -15,9 +16,6 @@ let mongoDB = 'mongodb+srv://rfellah:<CS1073Fall>@cluster0-rzhom.azure.mongodb.n
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-
-app.use('/catalog', catalogRouter);  // Add catalog routes to middleware chain.
 
 
 // view engine setup
@@ -31,6 +29,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/catalog', catalogRouter);  // Add catalog routes to middleware chain.
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
