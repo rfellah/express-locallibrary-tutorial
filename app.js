@@ -4,6 +4,11 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
+// Security stuff
+const dotenv = require('dotenv')
+dotenv.config({path: '.env'})
+dev_db_url = process.env.ATLAS_URI
+
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
