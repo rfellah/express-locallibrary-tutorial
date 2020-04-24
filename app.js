@@ -4,10 +4,6 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
-// Security stuff
-const dotenv = require('dotenv')
-dotenv.config({path: '.env'})
-dev_db_url = process.env.ATLAS_URI
 
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
@@ -15,9 +11,14 @@ let catalogRouter = require('./routes/catalog');  //Import routes for "catalog" 
 
 let app = express();
 
+// Security stuff
+const dotenv = require('dotenv')
+dotenv.config({path: '.env'})
+dev_db_url = process.env.ATLAS_URI
+
 //Set up mongoose connection
-let mongoose = require('mongoose');
-let mongoDB = 'mongodb+srv://rfellah:<CS1073Fall>@cluster0-rzhom.azure.mongodb.net/test?retryWrites=true&w=majority';
+let mongoose = require('mongoose');//CS1073Fall
+let mongoDB = 'mongodb+srv://rfellah:<helloworld!>@cluster0-rzhom.azure.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
