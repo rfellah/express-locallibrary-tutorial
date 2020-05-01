@@ -3,12 +3,12 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
-
+let helmet = require('helmet');
 
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
-var compression = require('compression');
+let compression = require('compression');
 
 let app = express();
 app.use(helmet());
