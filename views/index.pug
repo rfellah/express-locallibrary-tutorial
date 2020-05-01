@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
   p Welcome to #[em LocalLibrary], a very basic Express website developed as a tutorial example on the Mozilla Developer Network.
-  P By Raouf Fellah
+  h5 By Raouf Fellah
   h1 Dynamic content
 
   if error
@@ -17,3 +17,6 @@ block content
       li #[strong Copies available:] !{data.book_instance_available_count} 
       li #[strong Authors:] !{data.author_count}
       li #[strong Genres:] !{data.genre_count}
+
+  img(src='/public/images/book.jpg')
+  p This is an opne source image from unsplash.com  
