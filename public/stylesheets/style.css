@@ -3,3 +3,8 @@
   padding: 0;
   list-style: none;
 }
+
+#picture{
+  width: 25%;
+  length: 25%;
+}
