@@ -16,11 +16,13 @@ app.use(helmet());
 // Security stuff
 const dotenv = require('dotenv')
 dotenv.config({path: '.env'})
-dev_db_url = process.env.ATLAS_URI
+
 
 //Set up mongoose connection
 let mongoose = require('mongoose');//CS1073Fall
-let mongoDB = 'mongodb+srv://rfellah:<helloworld!>@cluster0-rzhom.azure.mongodb.net/test?retryWrites=true&w=majority';
+let dev_db_url = 'mongodb+srv://rfellah:<helloworld!>@cluster0-rzhom.azure.mongodb.net/test?retryWrites=true&w=majority';
+let mongoDB = process.env.MONGODB_URI || dev_db_url;
+
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
